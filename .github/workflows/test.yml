@@ -1,0 +1,22 @@
+name: tests
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main, vibe/*]
+
+jobs:
+  headless:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Syntaxe JS
+        run: for f in js/*.js test/*.js; do node --check "$f"; done
+      - name: Tests unitaires headless (60 assertions)
+        run: node test/smoke.js
+      - name: Soak (9000 frames aléatoires)
+        run: node test/soak.js
