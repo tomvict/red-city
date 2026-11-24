@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>VILLE ROUGE — crime game top-down</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="crt">
+<canvas id="game"></canvas>
+<div id="crt"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <defs>
+  <filter id="crtWarp">
+   <feTurbulence type="fractalNoise" baseFrequency="0.01 0.016" numOctaves="1" seed="7" result="n"/>
+   <feDisplacementMap in="SourceGraphic" in2="n" scale="12" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+ </defs>
+</svg>
+<div id="hud">
+ <div id="topleft">
+  <div id="hpwrap"><div id="hpFill"></div></div>
+  <div id="hpText">100 PV</div>
+  <div id="weapRow"><span id="weapName">Poings</span><span id="ammoText">--</span></div>
+  <div id="moneyText">$ 0</div>
+  <div id="starsText"></div>
+ </div>
+ <div id="objectiveText"></div>
+ <div id="msgText"></div>
+ <div id="promptText"></div>
+ <canvas id="minimap" width="168" height="168"></canvas>
+ <button id="crtBtn" type="button">CRT : ON</button>
+</div>
+<div id="menu">
+ <h1>VILLE&nbsp;ROUGE</h1>
+ <p class="sub">GTA &times; HOTLINE MIAMI — open world top-down, ultra-violence, pixel art néon</p>
+ <div class="controls">
+  <div><b>ZQSD / WASD / flèches</b> — se déplacer (à pied) ou conduire</div>
+  <div><b>Souris</b> — viser &nbsp; <b>Clic</b> — attaquer (poings / arme à feu)</div>
+  <div><b>E</b> — interagir : missions, entrer/sortir, monter dans une voiture</div>
+  <div><b>Espace</b> — frein à main &nbsp; <b>Clic en voiture</b> — klaxon</div>
+  <div><b>C</b> — mode CRT on/off &nbsp; <b>M</b> — muet &nbsp; <b>P</b> — pause</div>
+  <div>Missions aux cabines téléphoniques <b>!</b> : tuer tout le monde, récupérer un objet, sauver un otage, détruire un dispositif.</div>
+  <div>Commettez des crimes et la police rapplique. Volez des voitures, échappez-vous.</div>
+ </div>
+ <p class="start">CLIQUEZ POUR JOUER</p>
+</div>
+<div id="over" class="hidden">
+ <h1>VOUS ÊTES MORT</h1>
+ <p id="stats"></p>
+ <p class="start">R ou clic : recommencer</p>
+</div>
+<div id="pauseEl" class="hidden">
+ <h1>PAUSE</h1>
+ <p class="start">P : reprendre</p>
+</div>
+<script src="js/util.js"></script>
+<script src="js/input.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/world.js"></script>
+<script src="js/entities.js"></script>
+<script src="js/missions.js"></script>
+<script src="js/render.js"></script>
+<script src="js/game.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

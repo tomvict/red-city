@@ -1,0 +1,40 @@
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#000}
+body{font-family:'Courier New',ui-monospace,monospace;color:#eee}
+#game{position:fixed;inset:0;width:100vw;height:100vh;display:block;image-rendering:pixelated;image-rendering:crisp-edges;background:#000;cursor:crosshair}
+body.crt #game{filter:url(#crtWarp)}
+#crt{position:fixed;inset:0;pointer-events:none;display:none;z-index:5;
+ background:
+  radial-gradient(ellipse at center,rgba(0,0,0,0) 55%,rgba(0,0,0,0.45) 100%),
+  repeating-linear-gradient(0deg,rgba(0,0,0,0.28) 0px,rgba(0,0,0,0.28) 1px,transparent 1px,transparent 3px),
+  linear-gradient(0deg,rgba(255,0,80,0.03),rgba(0,255,255,0.03));
+ mix-blend-mode:multiply;
+ animation:flicker 0.12s infinite;
+}
+body.crt #crt{display:block}
+@keyframes flicker{0%{opacity:0.97}50%{opacity:1}100%{opacity:0.96}}
+#hud{position:fixed;inset:0;pointer-events:none;z-index:10}
+#topleft{position:absolute;top:12px;left:12px;text-shadow:0 0 6px #ff2d78,1px 1px 0 #000}
+#hpwrap{width:180px;height:16px;background:#2a0a12;border:2px solid #ff2d78}
+#hpFill{height:100%;width:100%;background:linear-gradient(90deg,#ff2d55,#ff7b9c)}
+#hpText{margin-top:3px;font-weight:bold}
+#weapRow{margin-top:6px}
+#weapName{color:#ffe66d;font-weight:bold;margin-right:10px}
+#ammoText{color:#9fd3e8}
+#moneyText{margin-top:4px;color:#7dff8a;font-weight:bold;font-size:18px}
+#starsText{margin-top:2px;color:#ffd23f;font-size:18px;letter-spacing:2px}
+#objectiveText{position:absolute;top:12px;left:50%;transform:translateX(-50%);color:#ffe66d;font-weight:bold;text-shadow:0 0 8px #000,1px 1px 0 #000;max-width:70vw;text-align:center}
+#msgText{position:absolute;top:64px;left:50%;transform:translateX(-50%);color:#7dff8a;font-weight:bold;font-size:20px;text-shadow:0 0 10px #0f0,2px 2px 0 #000}
+#promptText{position:absolute;bottom:90px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.65);border:1px solid #ffe66d;color:#ffe66d;padding:6px 14px;font-weight:bold;text-shadow:1px 1px 0 #000}
+#minimap{position:absolute;top:12px;right:12px;border:2px solid #333;background:#0d0d12;image-rendering:pixelated}
+#crtBtn{position:absolute;bottom:12px;right:12px;pointer-events:auto;background:#16060c;color:#ff2d78;border:2px solid #ff2d78;font-family:inherit;font-weight:bold;padding:6px 12px;cursor:pointer;text-shadow:0 0 6px #ff2d78}
+#crtBtn:hover{background:#ff2d78;color:#000}
+#menu,#over,#pauseEl{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,#1a0b14 0%,#050308 70%);cursor:pointer;text-align:center}
+#menu h1,#over h1,#pauseEl h1{font-size:64px;margin:0;color:#ff2d78;text-shadow:0 0 18px #ff2d78,0 0 60px #ff2d78,3px 3px 0 #400;letter-spacing:6px}
+#over h1{color:#ff3355;text-shadow:0 0 18px #ff3355,3px 3px 0 #300}
+.sub{color:#9fd3e8;text-shadow:0 0 8px #2874a6}
+.controls{margin:22px 0;line-height:1.9;color:#ddd;background:rgba(0,0,0,0.5);border:1px solid #ff2d78;padding:14px 26px;max-width:640px}
+.controls b{color:#ffe66d}
+.start{font-size:24px;font-weight:bold;color:#7dff8a;animation:blink 1s steps(2) infinite;text-shadow:0 0 10px #0f0}
+@keyframes blink{50%{opacity:0.25}}
+.hidden{display:none !important}
